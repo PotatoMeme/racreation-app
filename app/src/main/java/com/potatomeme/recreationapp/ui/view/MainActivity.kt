@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.potatomeme.recreationapp.R
 import com.potatomeme.recreationapp.data.repository.FlagRepositoryImpl
+import com.potatomeme.recreationapp.data.repository.InfoRepositoryImpl
 import com.potatomeme.recreationapp.databinding.ActivityMainBinding
 import com.potatomeme.recreationapp.ui.viewmodel.MainViewModel
 import com.potatomeme.recreationapp.ui.viewmodel.MainViewModelProviderFactory
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val flagRepositoryImpl = FlagRepositoryImpl()
-        val factory = MainViewModelProviderFactory(flagRepositoryImpl)
+        val infoRepositoryImpl = InfoRepositoryImpl()
+        val factory = MainViewModelProviderFactory(flagRepositoryImpl,infoRepositoryImpl)
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         setupJetpackNavigation()

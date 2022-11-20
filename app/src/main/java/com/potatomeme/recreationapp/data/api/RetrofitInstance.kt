@@ -47,7 +47,7 @@ object RetrofitInstance {
         return builder
     }
 
-    private val flagRetrofit: Retrofit by lazy {
+    private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(getUnsafeOkHttpClient().build())
@@ -56,7 +56,11 @@ object RetrofitInstance {
     }
 
     val flagApi: FlagApi by lazy {
-        flagRetrofit.create(FlagApi::class.java)
+        retrofit.create(FlagApi::class.java)
+    }
+
+    val infoApi: InfoApi by lazy {
+        retrofit.create(InfoApi::class.java)
     }
 
 
